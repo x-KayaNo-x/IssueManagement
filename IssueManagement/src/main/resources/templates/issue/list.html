@@ -19,7 +19,7 @@
 	<tbody >
 		<tr th:each="issue : ${issueList}" th:object="${issue}">
 			<td><a href="#" th:href="@{/issue/{id}(id=*{id})}" th:text="*{summary}">(summary)</a></td>
-			<td >(priority)</td>
+			<td th:text="*{priority}">(priority)</td>
 		</tr>
 	</tbody>
 </table>

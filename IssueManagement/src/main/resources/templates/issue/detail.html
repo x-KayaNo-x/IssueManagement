@@ -6,11 +6,12 @@
 <title >課題詳細 | 課題管理アプリケーション</title>
 </head>
 <body>
-<h1>課題詳細</h1>
+<h1 class="mt-3">課題詳細</h1>
 <div th:object="${issue}">
-	<h2 th:text="*{summary}">(summary)</h2>
-	<p th:text="*{description}">(description)</p>
+	概要: <h2 th:text="*{summary}">(summary)</h2>
+	説明: <p th:text="*{description}">(description)</p>
+	優先度: <p th:texxt="*{priority}">(priority)</p>
 </div>
-<a href="#" th:href="@{/issue}">戻る</a>
+<a href="#" th:href="@{/issue}" class="btn btn-primary">戻る</a>
 </body>
 </html>

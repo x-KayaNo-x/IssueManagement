@@ -17,4 +17,6 @@ public class IssueForm {
 	@NotBlank
 	@Size(max=200)
 	private String desctiption;
+	
+	private String priority;
 }

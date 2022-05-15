@@ -10,6 +10,5 @@ public class IssueEntity {
 	private int id;
 	private String summary;
 	private String description;
-	private int userId;
-	private int priorityId;
+	private String priority;
 }

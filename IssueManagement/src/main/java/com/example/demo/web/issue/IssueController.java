@@ -43,7 +43,7 @@ public class IssueController {
 		if (bindingResult.hasErrors()) {
 			return showCreateForm(form);
 		}
-		issueService.create(form.getSummary(), form.getDesctiption());
+		issueService.create(form.getSummary(), form.getDesctiption(), form.getPriority());
 		return "redirect:/issue"; 
 	}
 	
