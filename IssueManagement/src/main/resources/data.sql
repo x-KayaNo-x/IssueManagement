@@ -14,4 +14,4 @@ INSERT INTO priority (id, priority) VALUES (3, '低');
 
 INSERT INTO users (id, username, password, authority) VALUES (1, 'tom', 'password', 'USER');
 INSERT INTO users (id, username, password, authority) VALUES (2, 'bob', 'password', 'USER');
-INSERT INTO users (id, username, password, authority) VALUES (3, 'ken', 'password', 'USER');
+INSERT INTO users (id, username, password, authority) VALUES (3, 'ken', 'password', 'ADMIN');
