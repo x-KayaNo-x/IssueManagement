@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
 <head>
 <meta charset="UTF-8">
 <title >課題作成 | 課題管理アプリケーション</title>
 </head>
 <body>
 <h1>課題作成</h1>
-<form action="#" th:action="@{/issue/createForm}" method="post">
+<form action="#" th:action="@{/issue/createForm}" method="post" th:object=${issueForm}>
 	<div>
-		<label for="summaryInput">概要</label>
-		<input type="text" id="summaryInput" name="summary" >
+		<label for="summaryInput" class="form-label">概要</label>
+		<input type="text" id="summaryInput" th:field="*{summary}" class="form-control"
+		th:classappend="${#fields.hasErrors('summary')} ? is-invalid">
+		<p class="invalid-feedback" th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}">(error)</p>
 	</div>
 	<div>
-		<label for="desctiptionInput">説明</label>
-		<input type="text" id="descriptionInput" name="desctiption" >
+		<label for="desctiptionInput" class="form-label">説明</label>
+		<input type="text" id="descriptionInput" th:field="*{desctiption}" class="form-control"
+		th:classappend="${#fields.hasErrors('desctiption')} ? is-invalid">
+		<p class="invalid-feedback" th:if="${#fields.hasErrors('desctiption')}" th:errors="*{desctiption}">(error)</p>
 	</div>
 	<div>
-		<button type="submit">作成</button>
-		<a href="#" th:href="@{/issue}">戻る</a>
+		<button type="submit" class="btn btn-primary">作成</button>
+		<a href="#" th:href="@{/issue}" class="btn btn-secondary">戻る</a>
 	</div>
 </form>
 </body>

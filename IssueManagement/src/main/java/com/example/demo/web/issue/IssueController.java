@@ -2,7 +2,10 @@ package com.example.demo.web.issue;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +34,15 @@ public class IssueController {
 	}
 	
 	@GetMapping("/createForm")
-	public String showCreateForm(){
+	public String showCreateForm(@ModelAttribute IssueForm form){
 		return "issue/createForm";
 	}
 	
 	@PostMapping("/createForm")
-	public String createForm(IssueForm form) {
+	public String createForm(@Validated IssueForm form, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return showCreateForm(form);
+		}
 		issueService.create(form.getSummary(), form.getDesctiption());
 		return "redirect:/issue"; 
 	}
