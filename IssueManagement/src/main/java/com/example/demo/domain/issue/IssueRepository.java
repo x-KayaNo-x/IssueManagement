@@ -13,11 +13,13 @@ import org.apache.ibatis.annotations.Update;
 public interface IssueRepository {
 
 	@Select("select issues.id, summary, description, priority "
-			+ "from issues left join priority on priorityId = priority.id")
+			+ "from issues left join priority on priorityId = priority.id "
+			+ "order by priorityId")
 	List<IssueEntity> findAll();
 
 	@Select("select issues.id, summary, description, priority from issues "
-			+"left join priority on priorityId = priority.id where issues.id = #{id}")
+			+"left join priority on priorityId = priority.id where issues.id = #{id} "
+			+ "order by priorityId")
 	IssueEntity findById(int id);
 
 	@Insert("insert into issues (summary, description, userId, priorityId) "
@@ -34,6 +36,7 @@ public interface IssueRepository {
 	void delete(int id);
 
 	@Select("select issues.id, summary, description, priority from issues "
-			+"left join priority on priorityId = priority.id where summary like '%${keyword}%'")
+			+"left join priority on priorityId = priority.id where summary like '%${keyword}%' "
+			+ "order by priorityId")
 	List<IssueEntity> findByKeyword(String keyword);
 }
