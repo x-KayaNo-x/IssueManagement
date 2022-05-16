@@ -34,4 +34,8 @@ public class IssueService {
 		issueRepository.delete(id);
 	}
 
+	public List<IssueEntity> findByKeyword(String keyword) {
+		return issueRepository.findByKeyword(keyword);
+	}
+
 }

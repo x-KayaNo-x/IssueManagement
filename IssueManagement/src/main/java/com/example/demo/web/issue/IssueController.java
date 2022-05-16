@@ -27,6 +27,13 @@ public class IssueController {
 		return "issue/list";
 	}
 	
+	@GetMapping("/select")
+	public String showSelectList(String keyword, Model model) {
+		System.out.print(keyword);
+		model.addAttribute("issueList", issueService.findByKeyword(keyword));
+		return "issue/list";
+	}
+	
 	@GetMapping("/{id}")
 	public String showDetail(@PathVariable("id") int id, Model model) {
 		model.addAttribute("issue", issueService.findById(id));		

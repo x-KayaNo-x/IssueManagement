@@ -32,4 +32,8 @@ public interface IssueRepository {
 
 	@Delete("delete from issues where id = #{id}")
 	void delete(int id);
+
+	@Select("select issues.id, summary, description, priority from issues "
+			+"left join priority on priorityId = priority.id where summary like '%${keyword}%'")
+	List<IssueEntity> findByKeyword(String keyword);
 }
