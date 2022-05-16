@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>ログアウトページ | 課題管理アプリケーション</title>
+</head>
+<body>
+<h1 class="mt-3">ログアウト画面</h1>
+<div class="mt-3">
+	<a href="./login.html" th:href="@{/login}" class="btn btn-primary">ログアウト</a>
+</div>
+</body>
+</html>
