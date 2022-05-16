@@ -39,16 +39,35 @@ public class IssueController {
 	}
 	
 	@PostMapping("/createForm")
-	public String createForm(@Validated IssueForm form, BindingResult bindingResult) {
+	public String create(@Validated IssueForm form, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return showCreateForm(form);
 		}
-		issueService.create(form.getSummary(), form.getDesctiption(), form.getPriority());
+		issueService.create(form.getSummary(), form.getDescription(), form.getPriority());
 		return "redirect:/issue"; 
 	}
 	
+	@GetMapping("/update/{id}")
+	public String showUpdateForm(@PathVariable("id") int id, Model model) {
+		model.addAttribute("issueForm", issueService.findById(id));
+		return "issue/updateForm";
+	}
 	
+	@PostMapping("/updateForm/{id}")
+	public String update(@Validated IssueForm form, BindingResult bindingResult,
+			@PathVariable("id") int id, Model model) {
+		if (bindingResult.hasErrors()) {
+			return "issue/updateForm";
+		}
+		issueService.update(id, form.getSummary(), form.getDescription(), form.getPriority());
+		return "redirect:/issue"; 
+	}
 	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") int id, Model model) {
+		issueService.delete(id);
+		return showList(model);
+	}
 	
 	
 }

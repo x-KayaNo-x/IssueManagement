@@ -10,13 +10,14 @@ import lombok.Data;
 @AllArgsConstructor
 public class IssueForm {
 
+	
 	@NotBlank
 	@Size(max=200)
 	private String summary;
 	
 	@NotBlank
 	@Size(max=200)
-	private String desctiption;
+	private String description;
 	
 	private String priority;
 }

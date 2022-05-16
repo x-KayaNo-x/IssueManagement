@@ -25,4 +25,13 @@ public class IssueService {
 		issueRepository.create(summary, description, priorityId);
 	}
 
+	public void update(int id, String summary, String description, String priority) {
+		int priorityId = Integer.parseInt(priority);
+		issueRepository.update(id, summary, description, priorityId);
+	}
+
+	public void delete(int id) {
+		issueRepository.delete(id);
+	}
+
 }
