@@ -1,5 +1,7 @@
 package com.example.demo.web.issue;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,15 +24,15 @@ public class IssueController {
 	private final IssueService issueService;
 
 	@GetMapping
-	public String showList(Model model) {
-		model.addAttribute("issueList", issueService.findAll());
+	public String showList(@AuthenticationPrincipal UserDetails user, Model model) {
+		System.out.print(user.getUsername());
+		model.addAttribute("issueList", issueService.findAll(user.getUsername()));
 		return "issue/list";
 	}
 	
 	@GetMapping("/select")
-	public String showSelectList(String keyword, Model model) {
-		System.out.print(keyword);
-		model.addAttribute("issueList", issueService.findByKeyword(keyword));
+	public String showSelectList(@AuthenticationPrincipal UserDetails user, String keyword, Model model) {
+		model.addAttribute("issueList", issueService.findByKeyword(keyword, user.getUsername()));
 		return "issue/list";
 	}
 	
@@ -71,9 +73,9 @@ public class IssueController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable("id") int id, Model model) {
+	public String delete(@PathVariable("id") int id,@AuthenticationPrincipal UserDetails user, Model model) {
 		issueService.delete(id);
-		return showList(model);
+		return showList(user, model);
 	}
 	
 	

@@ -14,8 +14,9 @@ public interface IssueRepository {
 
 	@Select("select issues.id, summary, description, priority "
 			+ "from issues left join priority on priorityId = priority.id "
+			+ "where username = #{nsername} "
 			+ "order by priorityId")
-	List<IssueEntity> findAll();
+	List<IssueEntity> findAll(String username);
 
 	@Select("select issues.id, summary, description, priority from issues "
 			+"left join priority on priorityId = priority.id where issues.id = #{id} "
@@ -36,7 +37,8 @@ public interface IssueRepository {
 	void delete(int id);
 
 	@Select("select issues.id, summary, description, priority from issues "
-			+"left join priority on priorityId = priority.id where summary like '%${keyword}%' "
+			+"left join priority on priorityId = priority.id "
+			+ "where summary like '%${keyword}%' and username = #{username}"
 			+ "order by priorityId")
-	List<IssueEntity> findByKeyword(String keyword);
+	List<IssueEntity> findByKeyword(@Param("keyword")String keyword, @Param("username")String username);
 }

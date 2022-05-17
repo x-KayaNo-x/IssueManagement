@@ -11,11 +11,9 @@ import lombok.RequiredArgsConstructor;
 public class IssueService {
 	
 	private final IssueRepository issueRepository;
-//	private final UserRepository userRepository;
 	
-	public List<IssueEntity> findAll(){
-//		int userId = userRepository.findUserId();
-		return issueRepository.findAll();
+	public List<IssueEntity> findAll(String username){
+		return issueRepository.findAll(username);
 	}
 
 	public IssueEntity findById(int id) {
@@ -36,8 +34,8 @@ public class IssueService {
 		issueRepository.delete(id);
 	}
 
-	public List<IssueEntity> findByKeyword(String keyword) {
-		return issueRepository.findByKeyword(keyword);
+	public List<IssueEntity> findByKeyword(String keyword, String username) {
+		return issueRepository.findByKeyword(keyword, username);
 	}
 
 }
