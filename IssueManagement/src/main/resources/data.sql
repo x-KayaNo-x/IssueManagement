@@ -12,6 +12,7 @@ INSERT INTO priority (id, priority) VALUES (1, '高');
 INSERT INTO priority (id, priority) VALUES (2, '中');
 INSERT INTO priority (id, priority) VALUES (3, '低');
 
-INSERT INTO users (id, username, password, authority) VALUES (1, 'tom', 'password', 'USER');
-INSERT INTO users (id, username, password, authority) VALUES (2, 'bob', 'password', 'USER');
-INSERT INTO users (id, username, password, authority) VALUES (3, 'ken', 'password', 'ADMIN');
+-- password --
+INSERT INTO users (id, username, password, authority) VALUES (1, 'tom', '$2a$08$OqGyRm3IudPT3rOC9HlvbuHDfdKZqBxXaghzU.pn5xHLt/oIITHSK', 'USER');
+INSERT INTO users (id, username, password, authority) VALUES (2, 'bob', '$2a$08$OqGyRm3IudPT3rOC9HlvbuHDfdKZqBxXaghzU.pn5xHLt/oIITHSK', 'USER');
+INSERT INTO users (id, username, password, authority) VALUES (3, 'ken', '$2a$08$OqGyRm3IudPT3rOC9HlvbuHDfdKZqBxXaghzU.pn5xHLt/oIITHSK', 'ADMIN');

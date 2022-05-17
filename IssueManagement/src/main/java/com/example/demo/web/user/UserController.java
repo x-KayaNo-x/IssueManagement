@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.domain.user.UserService;
+import com.example.demo.domain.auth.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -39,10 +39,6 @@ public class UserController {
 		userService.create(form.getUsername(), form.getPassword(), form.getAuthority());
 		return "redirect:/user";
 	}
-	
-	
-	
-	
 	
 	
 }
