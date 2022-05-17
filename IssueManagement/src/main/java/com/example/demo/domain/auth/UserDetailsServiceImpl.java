@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class CustomUserDetailsService implements UserDetailsService{
+public class UserDetailsServiceImpl implements UserDetailsService{
 	
 	private final UserRepository userRepository;
 
@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		 return this.userRepository.findByUsername(username)
 				.map(
-					user -> new CustomUserDetails(
+					user -> new CustomUser(
 							user.getUsername(),
 							user.getPassword(),
 							toGrantedAythorityList(user.getAuthority())

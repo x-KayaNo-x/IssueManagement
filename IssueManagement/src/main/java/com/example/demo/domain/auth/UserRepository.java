@@ -21,5 +21,6 @@ public interface UserRepository {
 	@Select("select username, password, authority from users")
 	List<User> findAll();
 
+	
 }
 

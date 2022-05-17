@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class User {
-	
+
 	@NotNull
 	@Size(max = 50)
 	private String username;

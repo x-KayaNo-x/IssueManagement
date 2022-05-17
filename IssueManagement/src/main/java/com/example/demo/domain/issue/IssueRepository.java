@@ -22,8 +22,8 @@ public interface IssueRepository {
 			+ "order by priorityId")
 	IssueEntity findById(int id);
 
-	@Insert("insert into issues (summary, description, userId, priorityId) "
-			+ "values (#{summary}, #{desctiption}, 1, #{priorityId})")
+	@Insert("insert into issues (summary, description, username, priorityId) "
+			+ "values (#{summary}, #{desctiption}, 'ken', #{priorityId})")
 	void create(@Param("summary")String summary, @Param("desctiption")String description,
 			@Param("priorityId") int priorityId);
 
