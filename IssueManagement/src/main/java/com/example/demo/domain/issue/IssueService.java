@@ -20,9 +20,9 @@ public class IssueService {
 		return issueRepository.findById(id);
 	}
 
-	public void create(String summary, String description, String priority) {
+	public void create(String summary, String description, String username, String priority) {
 		int priorityId = Integer.parseInt(priority);
-		issueRepository.create(summary, description, priorityId);
+		issueRepository.create(summary, description, username, priorityId);
 	}
 
 	public void update(int id, String summary, String description, String priority) {

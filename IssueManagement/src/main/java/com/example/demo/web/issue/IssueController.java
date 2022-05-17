@@ -25,7 +25,6 @@ public class IssueController {
 
 	@GetMapping
 	public String showList(@AuthenticationPrincipal UserDetails user, Model model) {
-		System.out.print(user.getUsername());
 		model.addAttribute("issueList", issueService.findAll(user.getUsername()));
 		return "issue/list";
 	}
@@ -48,11 +47,11 @@ public class IssueController {
 	}
 	
 	@PostMapping("/createForm")
-	public String create(@Validated IssueForm form, BindingResult bindingResult) {
+	public String create(@Validated IssueForm form, @AuthenticationPrincipal UserDetails user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return showCreateForm(form);
 		}
-		issueService.create(form.getSummary(), form.getDescription(), form.getPriority());
+		issueService.create(form.getSummary(), form.getDescription(), user.getUsername(), form.getPriority());
 		return "redirect:/issue"; 
 	}
 	
