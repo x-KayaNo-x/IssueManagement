@@ -25,5 +25,13 @@ public class UserService {
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public String delete(String username, String getUsername) {
+		if (!username.equals(getUsername)){
+			userRepository.delete(username);
+			return "";
+		}
+		return "ログイン中のアカウントは削除できません。";
+	}
 
 }
