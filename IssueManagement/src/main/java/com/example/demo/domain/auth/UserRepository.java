@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserRepository {
 
-	@Select("select * from users where username = #{usernmae}")
+	@Select("select username, password, authority from users where username = #{usernmae}")
 	Optional<User> findByUsername(String username);
 	
 	
